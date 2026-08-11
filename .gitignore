@@ -44,6 +44,14 @@ build/
 Build/
 build-*/
 
+# CLion build directories
+cmake-build-debug/
+cmake-build-release/
+
+# IDE
+.idea/
+.vscode/
+
 # CMake generated files
 CMakeFiles/
 CMakeCache.txt
