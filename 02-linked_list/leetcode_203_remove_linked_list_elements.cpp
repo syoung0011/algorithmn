@@ -24,26 +24,30 @@ using namespace std;
 
 class Solution {
 public:
-    ListNode* removeElements(ListNode* head, int val) {
-        ListNode* dummy=new ListNode(); // 用虚拟头节点简化代码，无需分类讨论
-        dummy->next=head;   // 虚拟头节点!=头节点
-        ListNode* cur=dummy;    // cur当前，这里是要判断节点的上一个，cur->next即可到达目标无需pre冗余指针
-        while (cur->next) { // 不能写cur，不是多一次循环的问题，而是下面的if条件就会越界
-            if (cur->next->val==val) {
-                ListNode *temp=cur->next;
-                cur->next=cur->next->next;  // 画图理解
-                delete temp; // 必须最后删除，过早删除则cur->next直接丢失了
-                temp=nullptr;
+    ListNode *removeElements(ListNode *head, int val) {
+        // 用虚拟头节点简化代码，无需分类讨论
+        ListNode *dummy = new ListNode();
+        dummy->next = head; // 虚拟头节点!=头节点
+        // cur当前，这里是要判断节点的上一个，cur->next即可到达目标无需pre冗余指针
+        ListNode *cur = dummy;
+        // 不能写cur，不是多一次循环的问题，而是下面的if条件就会越界
+        while (cur->next) {
+            if (cur->next->val == val) {
+                ListNode *temp = cur->next;
+                cur->next = cur->next->next; // 画图理解
+                // 必须最后删除，过早删除则cur->next直接丢失了
+                delete temp;
+                temp = nullptr;
                 //delete命令指示释放了temp指针原本所指的那部分内存，
                 //被delete后的指针temp的值（地址）并非就是NULL，而是随机值。也就是被delete后，
                 //如果不再加上一句temp=nullptr,temp会成为乱指的野指针
                 //如果之后的程序不小心使用了temp，会指向难以预想的内存空间
-            }
-            else {
-                cur=cur->next;
+            } else {
+                cur = cur->next;
             }
         }
-        head=dummy->next;   // 重新赋值给head，这一步既是习惯，也必不可少，因为dummy空间需释放
+        // 重新赋值给head，这一步既是习惯，也必不可少，因为dummy空间需释放
+        head = dummy->next;
         delete dummy;
         return head;
     }
@@ -53,16 +57,22 @@ int main() {
     Solution solution;
 
     // 示例 1
-    ListNode* head1 = createList({1, 2, 6, 3, 4, 5, 6});
-    printList(solution.removeElements(head1, 6));  // 期望输出 1->2->3->4->5->nullptr
+    ListNode *head1 = createList({1, 2, 6, 3, 4, 5, 6});
+    ListNode *res1 = solution.removeElements(head1, 6);
+    printList(res1); // 期望输出 1->2->3->4->5->nullptr
+    deleteList(res1); // 被移除的节点已在函数内 delete，这里释放剩余部分
 
     // 示例 2
-    ListNode* head2 = createList({});
-    printList(solution.removeElements(head2, 1));  // 期望输出 nullptr
+    ListNode *head2 = createList({});
+    ListNode *res2 = solution.removeElements(head2, 1);
+    printList(res2); // 期望输出 nullptr
+    deleteList(res2);
 
     // 示例 3
-    ListNode* head3 = createList({7, 7, 7, 7});
-    printList(solution.removeElements(head3, 7));  // 期望输出 nullptr
+    ListNode *head3 = createList({7, 7, 7, 7});
+    ListNode *res3 = solution.removeElements(head3, 7);
+    printList(res3); // 期望输出 nullptr
+    deleteList(res3);
 
     return 0;
 }

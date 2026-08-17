@@ -24,6 +24,7 @@ algorithmn/
 ├── 11-monotonic_stack/
 ├── 12-graph_theory/
 ├── 13-other_classic/
+├── NOTES.md                    # 通用笔记：C++ 前置、工具链、跨专题积累
 └── CMakeLists.txt              # 自动收集所有题解，每题一个可执行文件
 ```
 
@@ -44,24 +45,35 @@ algorithmn/
 
 - 一道题一次 commit，message 格式：`[专题] LeetCode 题号. 题目名`
 - 示例：`[数组] LeetCode 704. 二分查找`
+- 笔记随手记随手提交，各专题心得写入对应目录的 `NOTES.md`，跨专题内容写入根目录 `NOTES.md`：
+  - 日常记录：`[专题] notes: 简要说明`，如 `[链表] notes: 插入删除用 cur cur->next`
+  - 通用笔记：`[notes] 简要说明`
+  - 专题收尾整理：`[专题] notes: 专题整理`
+- 修改已有题解（发现错误、事后优化）单独成 commit，不混入新题提交：`[专题] fix: 简要说明`
+- 每周总结：每周一回顾上一周，Wxx 填**被总结**的那一周；内容简短直接写 commit message，篇幅较长则追加到根目录 `NOTES.md`
+  - 格式：`[weekly] 2026-Wxx summary: 简要说明`
+  - 示例：`[weekly] 2026-W33 summary: progress & reflections`（周一提交，总结 W33）
 - 构建产物目录（如 `cmake-build-debug/`）已被 .gitignore 忽略，不会上传
 
 ## 打卡进度
 
-| 专题 | 目录 | 状态 |
-| ---- | ---- | ---- |
-| 数组 | 01-array | 未开始 |
-| 链表 | 02-linked_list | 未开始 |
-| 哈希表 | 03-hash_table | 未开始 |
-| 字符串 | 04-string | 未开始 |
-| 双指针法 | 05-two_pointers | 未开始 |
-| 栈与队列 | 06-stack_and_queue | 未开始 |
-| 二叉树 | 07-binary_tree | 未开始 |
-| 回溯算法 | 08-backtracking | 未开始 |
-| 贪心算法 | 09-greedy | 未开始 |
-| 动态规划 | 10-dynamic_programming | 未开始 |
-| 单调栈 | 11-monotonic_stack | 未开始 |
-| 图论 | 12-graph_theory | 未开始 |
-| 其他经典题目 | 13-other_classic | 未开始 |
+| 专题 | 目录 | 题数 | 进度   |
+| ---- | ---- | ---- |------|
+| 数组 | 01-array | 7 | 7/7  |
+| 链表 | 02-linked_list | 7 | 6/7  |
+| 哈希表 | 03-hash_table | 8 | 0/8  |
+| 字符串 | 04-string | 7 | 0/7  |
+| 双指针法 | 05-two_pointers | 0 | 0/0  |
+| 栈与队列 | 06-stack_and_queue | 7 | 0/7  |
+| 二叉树 | 07-binary_tree | 39 | 0/39 |
+| 回溯算法 | 08-backtracking | 15 | 0/15 |
+| 贪心算法 | 09-greedy | 17 | 0/17 |
+| 动态规划 | 10-dynamic_programming | 35 | 0/35 |
+| 单调栈 | 11-monotonic_stack | 5 | 0/5  |
+| 图论 | 12-graph_theory | 21 | 0/21 |
+| 其他经典题目 | 13-other_classic | 0 | 0/0  |
 
-刷完一题后，把对应专题的状态改为 `进行中`；整个专题完成改为 `已完成`。
+当前共计 **168** 题。
+
+- 进度格式为 `x/y`：y 为该专题题数（按目录下的题解 `.cpp` 文件数统计），新增题目后请同步更新"题数"与 y
+- 刷完一题后，自行把 x 更新为实际完成的题数；x 达到 y 即该专题已完成

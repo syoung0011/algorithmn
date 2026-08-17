@@ -27,20 +27,25 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    vector<int> nums(n);    // 其实可删去，参考题目需求。循环体内改为变量
+    // 其实可删去，参考题目需求。循环体内改为变量
+    vector<int> nums(n);
     vector<int> pre(n); // 前缀和[0,idx]
-    int sum = 0;    // 引入sum可以少写一些逻辑，或者省去一次循环，尽管复杂度不变
-    for (int i = 0; i < n; i++) {   // 主要时间复杂度融入输入，不代表复杂度O(1)
+    // 引入sum可以少写一些逻辑，或者省去一次循环，尽管复杂度不变
+    int sum = 0;
+    // 主要时间复杂度融入输入，不代表复杂度O(1)
+    for (int i = 0; i < n; i++) {
         cin >> nums[i]; // 追求效率改用c的io
         sum += nums[i];
         pre[i] = sum;
     }
-    int left,right;
-    while (cin >> left >> right) { // io写在while里
+    int left, right;
+    // io写在while里
+    while (cin >> left >> right) {
         int res;
-        if (left == 0) res = pre[right];    // 特殊情况分支处理
-        else res = pre[right] - pre[left - 1]; // 非常巧妙，不用left再加上nums[left]，而是用left-1
-        cout << res << endl;    // 可换\n提高效率
+        if (left == 0) res = pre[right]; // 特殊情况分支处理
+            // 非常巧妙，不用left再加上nums[left]，而是用left-1
+        else res = pre[right] - pre[left - 1];
+        cout << res << endl; // 可换\n提高效率
     }
     return 0;
 }

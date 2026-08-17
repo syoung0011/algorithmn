@@ -28,11 +28,11 @@ using namespace std;
 
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
+    int search(vector<int> &nums, int target) {
         int left = 0;
-        int right = nums.size() - 1;  // 左闭右闭区间 [left, right]
+        int right = nums.size() - 1; // 左闭右闭区间 [left, right]
         while (left <= right) {
-            int middle = left + (right - left) / 2;  // 防止溢出
+            int middle = left + (right - left) / 2; // 防止溢出
             if (nums[middle] > target) {
                 right = middle - 1;
             } else if (nums[middle] < target) {
@@ -49,11 +49,11 @@ int main() {
     Solution solution;
 
     vector<int> nums1 = {-1, 0, 3, 5, 9, 12};
-    cout << solution.search(nums1, 9) << endl;  // 期望输出 4
-    cout << solution.search(nums1, 2) << endl;  // 期望输出 -1
+    cout << solution.search(nums1, 9) << endl; // 期望输出 4
+    cout << solution.search(nums1, 2) << endl; // 期望输出 -1
 
     vector<int> nums2 = {5};
-    cout << solution.search(nums2, 5) << endl;  // 期望输出 0
+    cout << solution.search(nums2, 5) << endl; // 期望输出 0
     cout << solution.search(nums2, -5) << endl; // 期望输出 -1
 
     return 0;

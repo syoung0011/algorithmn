@@ -22,43 +22,49 @@
 #include <cstdint>
 #include <iostream>
 #include <vector>
-#include <algorithm>    // 显示包含，min，去掉也可以，但是依赖传递包含不可靠
+// 显示包含，min，去掉也可以，但是依赖传递包含不可靠
+#include <algorithm>
 #include <cstdlib>  // 显示包含，abs
 
 using namespace std;
 
 int main() {
-    int n,m;
-    cin>>n>>m;
-    vector<vector<int>> nums(n,vector<int>(m,0));
-    for (int i=0;i<n;i++) {
-        for (int j=0;j<m;j++) {
-            cin>>nums[i][j];
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int> > nums(n, vector<int>(m, 0));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> nums[i][j];
         }
     }
-    vector<int> pre_row(n,0);   // 按行划分前缀和，也可以省去数组，每一行结束统计一次情况，具体见网站代码
-    int sum_row=0;
-    for (int i=0;i<n;i++) {
-        for (int j=0;j<m;j++) {
-            sum_row+=nums[i][j];    // 其实这里理解上，很容易写出sum_row这个冗余变量，看下面列循环，完全可用pre动态记录
+    // 按行划分前缀和，也可以省去数组，每一行结束统计一次情况，具体见网站代码
+    vector<int> pre_row(n, 0);
+    int sum_row = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            // 其实这里理解上，很容易写出sum_row这个冗余变量，看下面列循环，完全可用pre动态记录
+            sum_row += nums[i][j];
         }
-        pre_row[i]=sum_row;
+        pre_row[i] = sum_row;
     }
-    vector<int> pre_col(m,0);
-    for (int j=0;j<m;j++) {
-        for (int i=0;i<n;i++) {
-           pre_col[j]+=nums[i][j];
+    vector<int> pre_col(m, 0);
+    for (int j = 0; j < m; j++) {
+        for (int i = 0; i < n; i++) {
+            pre_col[j] += nums[i][j];
         }
     }
-    int res=INT32_MAX;  // 数据规模大建议long long & LLONG_MAX（<climits>），abs和min可能也要提升
-    for (int i=0;i<n-1;i++) {
-        int res_row=pre_row[n-1]-2*pre_row[i];  // 这里有别于网站代码，没有left-1，而是按缝隙划分，且左右边界不符合实际不考虑
-        res=res<abs(res_row)?res:abs(res_row);  // 可用min函数，见如下列循环
+    // 数据规模大建议long long & LLONG_MAX（<climits>），abs和min可能也要提升
+    int res = INT32_MAX;
+    for (int i = 0; i < n - 1; i++) {
+        // 这里有别于网站代码，没有left-1，而是按缝隙划分，且左右边界不符合实际不考虑
+        int res_row = pre_row[n - 1] - 2 * pre_row[i];
+        // 可用min函数，见如下列循环
+        res = res < abs(res_row) ? res : abs(res_row);
     }
-    for (int j=0;j<m-1;j++) {
-        int res_col=pre_col[m-1]-2*pre_col[j];
-        res=min(res,abs(res_col));
+    for (int j = 0; j < m - 1; j++) {
+        int res_col = pre_col[m - 1] - 2 * pre_col[j];
+        res = min(res, abs(res_col));
     }
-    cout<<res<<endl;
+    cout << res << endl;
     return 0;
 }

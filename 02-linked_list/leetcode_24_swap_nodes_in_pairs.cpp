@@ -25,27 +25,26 @@ using namespace std;
 class Solution {
 public:
     // 以下两个方法有个小区别，前者要为下次循环的后置节点考虑，后者只考虑下次循环的前置节点
-
     // 1.自己想的方法，类似双指针，但可能情况比较复杂了，不好理解
     // ListNode *swapPairs(ListNode *head) {
     //     if (!head || !head->next) return head;
     //     ListNode *pre = head;
     //     ListNode *cur = head->next;
-    //     ListNode *res=cur;  // 仅用于记录返回头
+    //     ListNode *res = cur; // 仅用于记录返回头
     //     // 每趟循环的后置节点的next要提前连接下一次循环的后置节点
     //     // 因此循环条件不适合cur&&cur->next，缺少末尾最后一趟的处理
     //     // 这里用while 1然后循环体内自己做退出判断，是最为简便的
     //     while (1) {
-    //         ListNode *temp=cur->next;
-    //         cur->next=pre;
+    //         ListNode *temp = cur->next;
+    //         cur->next = pre;
     //         // 合并了2个if，比较难理解，可以画图自己想一下
-    //         if (!temp||!temp->next) {
+    //         if (!temp || !temp->next) {
     //             pre->next = temp;
     //             break;
     //         }
-    //         pre->next=temp->next;
-    //         pre=temp;
-    //         cur=temp->next;
+    //         pre->next = temp->next;
+    //         pre = temp;
+    //         cur = temp->next;
     //     }
     //     return res;
     // }

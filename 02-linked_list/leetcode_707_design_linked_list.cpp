@@ -31,46 +31,49 @@ class MyLinkedList {
 public:
     MyLinkedList() {
         // 构造函数（初始化虚拟头节点与 size）
-        _dummy=new ListNode();
-        _size=0;
+        _dummy = new ListNode();
+        _size = 0;
     }
 
-    // ~MyLinkedList() {
-    //     ListNode* cur = _dummy;
-    //     while (cur) {   // 连带虚拟头节点一起，无需额外处理
-    //         ListNode* temp = cur;
-    //         cur = cur->next;
-    //         delete temp;
-    //         temp=nullptr;   // 其实只要最后一次temp置空
-    //     }
-    // }
+    ~MyLinkedList() {
+        ListNode *cur = _dummy;
+        // 连带虚拟头节点一起，无需额外处理
+        while (cur) {
+            ListNode *temp = cur;
+            cur = cur->next;
+            delete temp;
+            // 其实只要最后一次temp置空
+            temp = nullptr;
+        }
+    }
 
     int get(int index) {
         // 获取指定索引的值
-        if (index<0||index>_size-1)return -1;
-        ListNode *cur=_dummy->next; // 直接用_dummy也行，但是就是繁一点。所以cur到底是上一个还是当前，要灵性判断
+        if (index < 0 || index > _size - 1)return -1;
+        // 直接用_dummy也行，但是就是繁一点。所以cur到底是上一个还是当前，要灵性判断
+        ListNode *cur = _dummy->next;
         while (index--) {
-            cur=cur->next;
+            cur = cur->next;
         }
         return cur->val;
     }
 
     void addAtHead(int val) {
         // 头插
-        ListNode* newNode=new ListNode(val);
-        newNode->next=_dummy->next;
-        _dummy->next=newNode;
-        _size++;    // 别忘了
+        ListNode *newNode = new ListNode(val);
+        newNode->next = _dummy->next;
+        _dummy->next = newNode;
+        _size++; // 易忘，勿遗漏
     }
 
     void addAtTail(int val) {
         // 尾插
-        ListNode* newNode=new ListNode(val);
-        ListNode* cur=_dummy;
+        ListNode *newNode = new ListNode(val);
+        ListNode *cur = _dummy;
         while (cur->next) {
-            cur=cur->next;
+            cur = cur->next;
         }
-        cur->next=newNode;
+        cur->next = newNode;
         _size++;
     }
 
@@ -80,15 +83,16 @@ public:
     // 如果index小于0，则在头部插入节点
     void addAtIndex(int index, int val) {
         // 指定索引（之前）插入
-        if(index > _size) return;
-        if(index < 0) index = 0;
-        ListNode* newNode=new ListNode(val);
-        ListNode* cur=_dummy;
-        while (index--) {   // 不能用自实现的get，因为它是求值，可额外实现getNode，见下方
-            cur=cur->next;
+        if (index > _size) return;
+        if (index < 0) index = 0;
+        ListNode *newNode = new ListNode(val);
+        ListNode *cur = _dummy;
+        // 不能用自实现的get，因为它是求值，可额外实现getNode，见下方
+        while (index--) {
+            cur = cur->next;
         }
-        newNode->next=cur->next;
-        cur->next=newNode;
+        newNode->next = cur->next;
+        cur->next = newNode;
         _size++;
     }
 
@@ -101,18 +105,20 @@ public:
     void deleteAtIndex(int index) {
         // 指定索引删除
         if (index >= _size || index < 0) return;
-        ListNode* cur=_dummy;
+        ListNode *cur = _dummy;
         while (index--) {
-            cur=cur->next;
+            cur = cur->next;
         }
-        ListNode* temp=cur->next;
-        cur->next=cur->next->next;
+        ListNode *temp = cur->next;
+        cur->next = cur->next->next;
         delete temp;
-        temp=nullptr;   // 习惯，回收置空，避免悬空指针再次使用
+        // 习惯，回收置空，避免悬空指针再次使用
+        temp = nullptr;
         _size--;
     }
+
 private:
-    ListNode* _dummy;
+    ListNode *_dummy;
     int _size;
 };
 
@@ -122,9 +128,10 @@ int main() {
     linkedList.addAtHead(1);
     linkedList.addAtTail(3);
     linkedList.addAtIndex(1, 2);
-    cout << linkedList.get(1) << endl;  // 期望输出 2
+    cout << linkedList.get(1) << endl; // 期望输出 2
     linkedList.deleteAtIndex(1);
-    cout << linkedList.get(1) << endl;  // 期望输出 3
+    cout << linkedList.get(1) << endl; // 期望输出 3
 
+    // 无需手动销毁了，因为自定义类封装链表，可以将回收写在析构函数
     return 0;
 }

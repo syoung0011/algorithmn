@@ -8,7 +8,7 @@
  * 思路：双指针法。平方后的最大值一定在原数组两端，用 i、j 分别指向首尾，
  *       比较两端平方值，大的从新数组末尾开始倒序装填，直至两指针相遇。
  *
- * 复杂度：时间复杂度 O(n)，空间复杂度 O(n)
+ * 复杂度：时间复杂度 O(n)，空间复杂度 O(1)（不计输出数组）
  *
  * 参考：代码随想录-数组篇-有序数组的平方
  *
@@ -25,16 +25,16 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> sortedSquares(vector<int>& nums) {
-        vector<int> result(nums.size());  // 必须预先分配大小，否则 result[idx] 越界写入
-        int idx=nums.size()-1;
-        for (int i=0,j=idx;i<=j;) {
-            if (nums[i]*nums[i]>nums[j]*nums[j]) {
-                result[idx--]=nums[i]*nums[i];  // 别误写成idx-1
+    vector<int> sortedSquares(vector<int> &nums) {
+        // 必须预先分配大小，否则 result[idx] 越界写入；二参数为初始值，建议填，无脑0就行，这是个习惯
+        vector<int> result(nums.size(), 0);
+        int idx = nums.size() - 1;
+        for (int i = 0, j = idx; i <= j;) {
+            if (nums[i] * nums[i] > nums[j] * nums[j]) {
+                result[idx--] = nums[i] * nums[i]; // 别误写成idx-1
                 i++;
-            }
-            else {
-                result[idx--]=nums[j]*nums[j];
+            } else {
+                result[idx--] = nums[j] * nums[j];
                 j--;
             }
         }
@@ -47,15 +47,15 @@ int main() {
 
     // 示例 1
     vector<int> nums1 = {-4, -1, 0, 3, 10};
-    for (int num : solution.sortedSquares(nums1)) {
-        cout << num << " ";  // 期望输出 0 1 9 16 100
+    for (int num: solution.sortedSquares(nums1)) {
+        cout << num << " "; // 期望输出 0 1 9 16 100
     }
     cout << endl;
 
     // 示例 2
     vector<int> nums2 = {-7, -3, 2, 3, 11};
-    for (int num : solution.sortedSquares(nums2)) {
-        cout << num << " ";  // 期望输出 4 9 9 49 121
+    for (int num: solution.sortedSquares(nums2)) {
+        cout << num << " "; // 期望输出 4 9 9 49 121
     }
     cout << endl;
 

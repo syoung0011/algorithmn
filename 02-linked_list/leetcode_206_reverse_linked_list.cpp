@@ -26,6 +26,7 @@ using namespace std;
 class Solution {
 public:
     ListNode *reverseList(ListNode *head) {
+        // 思考为何不用dummy了
         // 为何pre必须初始化为空，这是难点1
         ListNode *pre = nullptr;
         ListNode *cur = head;

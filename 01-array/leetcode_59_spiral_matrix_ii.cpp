@@ -25,10 +25,11 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<int>> generateMatrix(int n) {
+    vector<vector<int> > generateMatrix(int n) {
         int startx = 0, starty = 0;
-        vector<vector<int>> res(n, vector<int>(n, 0));  // 使用vector定义一个二维数组
-        int loop = n >> 1;  // 大大方方新建变量，方便自己，而不是用x,y的代数式间接表示，offset同理
+        vector<vector<int> > res(n, vector<int>(n, 0)); // 使用vector定义一个二维数组
+        // 大大方方新建变量，方便自己，而不是用x,y的代数式间接表示，offset同理
+        int loop = n >> 1;
         int offset = 1;
         int count = 1;
         while (loop--) {
@@ -40,7 +41,8 @@ public:
             for (; i < n - offset; i++) {
                 res[i][j] = count++;
             }
-            for (; j > starty; j--) {   // 这里其实也能用offset，只是y现成
+            for (; j > starty; j--) {
+                // 这里其实也能用offset，只是y现成
                 res[i][j] = count++;
             }
             for (; i > startx; i--) {
@@ -51,7 +53,7 @@ public:
             offset++;
         }
         if (n & 1) {
-            res[startx][starty] = count;    // 处理中间单个元素，n为偶数则无需
+            res[startx][starty] = count; // 处理中间单个元素，n为偶数则无需
         }
         return res;
     }
@@ -61,9 +63,9 @@ int main() {
     Solution solution;
 
     // 示例 1
-    vector<vector<int>> result1 = solution.generateMatrix(3);
-    for (const auto& row : result1) {
-        for (int num : row) {
+    vector<vector<int> > result1 = solution.generateMatrix(3);
+    for (const auto &row: result1) {
+        for (int num: row) {
             cout << num << " ";
         }
         cout << endl;
@@ -74,9 +76,9 @@ int main() {
     // 7 6 5
 
     // 示例 2
-    vector<vector<int>> result2 = solution.generateMatrix(1);
-    for (const auto& row : result2) {
-        for (int num : row) {
+    vector<vector<int> > result2 = solution.generateMatrix(1);
+    for (const auto &row: result2) {
+        for (int num: row) {
             cout << num << " ";
         }
         cout << endl;

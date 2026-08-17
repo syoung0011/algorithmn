@@ -26,7 +26,7 @@ using namespace std;
 
 class Solution {
 public:
-    int removeElement(vector<int>& nums, int val) {
+    int removeElement(vector<int> &nums, int val) {
         int slow = 0;
         for (int fast = 0; fast < nums.size(); fast++) {
             if (nums[fast] != val) {
@@ -34,7 +34,8 @@ public:
             }
             // 等于 val 的元素直接跳过，不复制
         }
-        return slow;    // 不是slow+1，因为循环退出已经+1了
+        // 不是slow+1，因为循环退出已经+1了
+        return slow;
     }
 };
 
@@ -43,11 +44,11 @@ int main() {
 
     // 示例 1
     vector<int> nums1 = {3, 2, 2, 3};
-    cout << solution.removeElement(nums1, 3) << endl;  // 期望输出 2
+    cout << solution.removeElement(nums1, 3) << endl; // 期望输出 2
 
     // 示例 2
     vector<int> nums2 = {0, 1, 2, 2, 3, 0, 4, 2};
-    cout << solution.removeElement(nums2, 2) << endl;  // 期望输出 5
+    cout << solution.removeElement(nums2, 2) << endl; // 期望输出 5
 
     return 0;
 }
