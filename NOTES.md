@@ -37,11 +37,19 @@
 
 #### 常用成员
 
-`size()`；`erase()` 是 O(n)。
+`size()` 是O(1)；`erase()` 是 O(n)；
 
 #### 二维数组
 
 ![image-20260817102752078](NOTES.assets/image-20260817102752078.png)
+
+### string
+
+#### 常用成员
+
+`size()` 是O(1)；
+
+![image-20260818134800103](NOTES.assets/image-20260818134800103.png)
 
 ## IO
 
