@@ -51,6 +51,28 @@
 
 ![image-20260818134800103](NOTES.assets/image-20260818134800103.png)
 
+### 哈希相关
+
+![image-20260819150015990](NOTES.assets/image-20260819150015990.png)
+
+![image-20260819150125134](NOTES.assets/image-20260819150125134.png)
+
+当我们要使用集合来解决哈希问题的时候，优先使用unordered_set，因为它的查询和增删效率是最优的，如果需要集合是有序的，那么就用set，如果要求不仅有序还要有重复数据的话，那么就用multiset。
+
+![image-20260819151514106](NOTES.assets/image-20260819151514106.png)
+
+那么再来看一下map ，在map 是一个key value 的数据结构，map中，对key是有限制，对value没有限制的，因为key的存储方式使用红黑树实现的。
+
+其他语言例如：java里的HashMap ，TreeMap 都是一样的原理。可以灵活贯通。
+
+虽然std::set和std::multiset 的底层实现基于红黑树而非哈希表，它们通过红黑树来索引和存储数据。不过给我们的使用方式，还是哈希法的使用方式，即依靠键（key）来访问值（value）。所以使用这些数据结构来解决映射问题的方法，我们依然称之为哈希法。std::map也是一样的道理。
+
+#### 补充
+
+这里在说一下，一些C++的经典书籍上 例如STL源码剖析，说到了hash_set hash_map，这个与unordered_set，unordered_map又有什么关系呢？
+
+实际上功能都是一样一样的， 但是unordered_set在C++11的时候被引入标准库了，而hash_set并没有，所以建议还是使用unordered_set比较好，这就好比一个是官方认证的，hash_set，hash_map 是C++11标准之前民间高手自发造的轮子。![image-20260819152347358](NOTES.assets/image-20260819152347358.png)
+
 ## IO
 
 ### 加速
