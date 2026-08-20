@@ -57,11 +57,11 @@
 
 ![image-20260819150125134](NOTES.assets/image-20260819150125134.png)
 
-当我们要使用集合来解决哈希问题的时候，优先使用unordered_set，因为它的查询和增删效率是最优的，如果需要集合是有序的，那么就用set，如果要求不仅有序还要有重复数据的话，那么就用multiset。
+当我们要使用集合来解决哈希问题的时候，优先使用**unordered_set**，因为它的查询和增删效率是最优的，如果需要集合是有序的，那么就用set，如果要求不仅有序还要有重复数据的话，那么就用multiset。
 
 ![image-20260819151514106](NOTES.assets/image-20260819151514106.png)
 
-那么再来看一下map ，在map 是一个key value 的数据结构，map中，对key是有限制，对value没有限制的，因为key的存储方式使用红黑树实现的。
+那么再来看一下map ，在map 是一个key value 的数据结构，map中，对key是有限制，对value没有限制的，因为key的存储方式使用红黑树实现的。优先使用**unordered_map**。
 
 其他语言例如：java里的HashMap ，TreeMap 都是一样的原理。可以灵活贯通。
 
