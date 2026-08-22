@@ -13,6 +13,23 @@
 
 ![image-20260816212938989](NOTES.assets/image-20260816212938989.png)
 
+e## long整型
+
+### long可能和 int 同范围
+
+C++ 标准只规定最小位宽：int ≥ 16 位，long ≥ 32 位，long long ≥ 64 位。具体多大取决于平台的数据模型：
+
+![image-20260822195629251](NOTES.assets/image-20260822195629251.png)
+
+所以在 Windows 和 32 位 Linux 上 long 确实和 int 一样都是 4 字节，用 long 接四数之和照样溢出；只有 long long（标准保证 ≥ 64 位）在所有平台都安全。
+
+### 小巧思
+
+标准 C++ 里没有 `ll` 这个类型，直接写 `ll sum = ...`; 编译不过。`ll` 相关的合法用法只有两种：
+
+1. 字面量后缀：`0LL`、`5ll`（大小写均可）。
+2. 竞赛代码里的自定义别名：typedef long long ll; 或 using ll = long long;，这是手写出来的别名，不是语言内置的。
+
 # C++	
 
 ![image-20260816214940924](NOTES.assets/image-20260816214940924.png)
@@ -30,6 +47,10 @@
 ![image-20260816232151974](NOTES.assets/image-20260816232151974.png)
 
 ![image-20260816232200880](NOTES.assets/image-20260816232200880.png)
+
+### 算法头文件
+
+标准归属头文件是 <utility>。此外 C++11 起标准规定 <algorithm> 会包含 <utility>，所以包含 <algorithm> 也能可靠地用到类似 std::swap，sort等方法。
 
 ## STL
 
