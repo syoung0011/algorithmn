@@ -13,7 +13,7 @@
  *
  * 复杂度：略
  *
- * 参考：代码随想录-链表篇-设计链表
+ * 参考：代码随想录 https://programmercarl.com/algo/linked-list/0707-design-linked-list.html
  *
  * 相关题目推荐：
  *   TODO 改用双向链表

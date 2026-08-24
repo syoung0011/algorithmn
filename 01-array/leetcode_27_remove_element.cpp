@@ -10,7 +10,7 @@
  *
  * 复杂度：时间复杂度 O(n)，空间复杂度 O(1)
  *
- * 参考：代码随想录-数组篇-移除元素
+ * 参考：代码随想录 https://programmercarl.com/algo/array/0027-remove-element.html
  *
  * 相关题目推荐：
  *   26. 删除有序数组中的重复项
@@ -28,6 +28,7 @@ class Solution {
 public:
     int removeElement(vector<int> &nums, int val) {
         int slow = 0;
+        // size() O(1)
         for (int fast = 0; fast < nums.size(); fast++) {
             if (nums[fast] != val) {
                 nums[slow++] = nums[fast];

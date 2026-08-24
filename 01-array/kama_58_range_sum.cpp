@@ -11,7 +11,7 @@
  *
  * 复杂度：时间复杂度 预处理 O(n)，每次查询 O(1)，设查询次数为 q，则 O(n + q)，空间复杂度 O(n)
  *
- * 参考：代码随想录-数组篇-前缀和
+ * 参考：代码随想录 https://programmercarl.com/algo/array/kamacoder-0058-range-sum.html
  *
  * 相关题目推荐：
  *   303. 区域和检索 - 数组不可变

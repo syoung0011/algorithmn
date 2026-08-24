@@ -8,7 +8,7 @@
  *
  * 复杂度：时间复杂度 O(n)，空间复杂度 O(1)
  *
- * 参考：代码随想录-链表篇-反转链表
+ * 参考：代码随想录 https://programmercarl.com/algo/linked-list/0206-reverse-linked-list.html
  *
  * 相关题目推荐：
  *   TODO 递归写法（其实就是双指针法提炼精简，但浪费空间。必须先会双指针法，不然递归极难理解）

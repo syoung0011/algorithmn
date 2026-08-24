@@ -11,7 +11,7 @@
  *
  * 复杂度：时间复杂度 O(n×m)（读入 + 两次前缀统计 + 枚举切割 O(n+m)），空间复杂度 O(m+n) / O(1)（仅统计额外变量，不计输入矩阵）
  *
- * 参考：代码随想录-数组篇-开发商购买土地
+ * 参考：代码随想录 https://programmercarl.com/algo/array/kamacoder-0044-land-purchase.html
  *
  * 相关题目推荐：
  *   304. 二维区域和检索 - 矩阵不可变

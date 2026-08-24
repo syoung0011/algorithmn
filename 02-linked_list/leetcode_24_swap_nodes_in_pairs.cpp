@@ -9,7 +9,7 @@
  *
  * 复杂度：时间复杂度 O(n)，空间复杂度 O(1)
  *
- * 参考：代码随想录-链表篇-两两交换链表中的节点
+ * 参考：代码随想录 https://programmercarl.com/algo/other/0024-swap-nodes-in-pairs.html
  *
  * 相关题目推荐：
  *   TODO 改用递归（暂未了解，可能更难理解）

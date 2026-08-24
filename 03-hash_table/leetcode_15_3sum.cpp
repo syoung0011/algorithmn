@@ -8,7 +8,7 @@
  *
  * 思路：排序 + 双指针，固定一个数后左右指针向中间收缩，注意去重
  *
- * 复杂度：时间复杂度 O(n^2)，空间复杂度 O(1)（不计输出数组）
+ * 复杂度：时间复杂度 O(n^2)，空间复杂度 O(1)（不计输出数组，sort 为原地排序，栈开销 O(log n) 通常忽略）
  *
  * 参考：代码随想录 https://programmercarl.com/algo/hash-table/0015-3sum.html
  *
@@ -35,7 +35,7 @@ public:
         // 难点很多，导致我没做成功，直接跑路换下面方法了，难点仍然在于去重
         vector<vector<int> > res; // 无需初始化n=0，这个应该是默认的
         // 排序一是输出结果比对需要，二是去重必要，后续两次去重都依赖有序
-        sort(nums.begin(), nums.end());
+        sort(nums.begin(), nums.end()); // algorithmn库
         for (int i = 0; i < nums.size(); i++) {
             if (nums[i] > 0)return res; // 提前
             // 错误去重a方法，将会漏掉-1,-1,2 这种情况

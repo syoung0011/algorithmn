@@ -10,7 +10,7 @@
  *
  * 复杂度：时间复杂度 O(n)，空间复杂度 O(1)（不计输出数组）
  *
- * 参考：代码随想录-数组篇-有序数组的平方
+ * 参考：代码随想录 https://programmercarl.com/algo/array/0977-squares-of-a-sorted-array.html
  *
  * 相关题目推荐：
  *   167. 两数之和 II - 输入有序数组

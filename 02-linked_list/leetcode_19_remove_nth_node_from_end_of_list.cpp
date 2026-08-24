@@ -8,7 +8,7 @@
  *
  * 复杂度：时间复杂度 O(n)，空间复杂度 O(1)
  *
- * 参考：代码随想录-链表篇-删除链表的倒数第 N 个结点
+ * 参考：代码随想录 https://programmercarl.com/algo/linked-list/0019-remove-nth-node-from-end-of-list.html
  *
  * 相关题目推荐：
  *   TODO 两趟扫描也可以，反正复杂度没变，可以尝试

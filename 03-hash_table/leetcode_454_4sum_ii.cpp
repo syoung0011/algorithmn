@@ -30,12 +30,12 @@ public:
                      vector<int> &nums3, vector<int> &nums4) {
         // 本题考点不是思路上的复杂，而是常人不敢这么想，总以为会有最简单的算法，实则靠的就是如何剥离4层循环
         // 从 O(n^4) -> O(n^2) 空间换时间，两层循环做两次，其实没有想象中的神秘，只是不敢尝试
-        unordered_map<int, int> nums12_map;
+        unordered_map<int, int> nums_12_map;
         int count = 0;
         // 也可用ABCD代替numx这种复杂的命名
         for (int num1: nums1) {
             for (int num2: nums2) {
-                nums12_map[num1 + num2]++; // 若map初始不为0则出错
+                nums_12_map[num1 + num2]++; // 若map初始不为0则出错
             }
         }
         for (int num3: nums3) {
@@ -43,11 +43,11 @@ public:
                 // 用 0-(num3,num4)更清晰
                 int target = -num3 - num4;
                 // find+[]取值一共两次哈希查找，建议抽离出iter
-                if (nums12_map.find(target) != nums12_map.end()) {
+                if (nums_12_map.find(target) != nums_12_map.end()) {
                     // 为何是直接+，而不是乘之类的，这个需要理解，可以自己举例子
                     // 如果新增一个nums34_map，可能就是乘了
                     // 因为是遍历3,4每种情况的过程中，所以相当于+k*1也就是+k了
-                    count += nums12_map[target];
+                    count += nums_12_map[target];
                 }
             }
         }

@@ -12,7 +12,7 @@
  *
  * 复杂度：时间复杂度 O(log n)，空间复杂度 O(1)
  *
- * 参考：代码随想录-数组篇-二分查找
+ * 参考：代码随想录 https://programmercarl.com/algo/array/0704-binary-search.html
  *
  * 相关题目推荐：
  *   35. 搜索插入位置

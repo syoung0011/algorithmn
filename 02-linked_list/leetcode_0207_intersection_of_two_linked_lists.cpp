@@ -9,7 +9,7 @@
  *
  * 复杂度：时间复杂度 O(n+m)，空间复杂度 O(1)
  *
- * 参考：代码随想录-链表篇-链表相交
+ * 参考：代码随想录 https://programmercarl.com/algo/linked-list/interview-02-07-linked-list-intersection.html
  *
  * 相关题目推荐：
  *   160. 相交链表

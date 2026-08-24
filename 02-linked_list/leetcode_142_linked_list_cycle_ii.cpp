@@ -9,7 +9,7 @@
  *
  * 复杂度：时间复杂度 O(n)（不是快指针位移而是循环次数，也就是慢指针位移），空间复杂度 O(1)
  *
- * 参考：代码随想录-链表篇-环形链表 II
+ * 参考：代码随想录 https://programmercarl.com/algo/linked-list/0142-linked-list-cycle-ii.html
  *
  * 相关题目推荐：
  *   141. 环形链表

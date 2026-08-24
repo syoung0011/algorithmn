@@ -10,7 +10,7 @@
  *
  * 复杂度：时间复杂度 O(n)，空间复杂度 O(1)
  *
- * 参考：代码随想录-数组篇-长度最小的子数组
+ * 参考：代码随想录 https://programmercarl.com/algo/array/0209-minimum-size-subarray-sum.html
  *
  * 相关题目推荐：
  *   TODO 如果你已经实现 O(n) 时间复杂度的解法, 请尝试设计一个 O(n log n) 时间复杂度的解法。（方法二：前缀和 + 二分查找）

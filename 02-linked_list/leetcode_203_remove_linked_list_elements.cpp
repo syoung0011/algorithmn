@@ -9,7 +9,7 @@
  *
  * 复杂度：时间复杂度 O(n)，空间复杂度 O(1)
  *
- * 参考：代码随想录-链表篇-移除链表元素
+ * 参考：代码随想录 https://programmercarl.com/algo/linked-list/0203-remove-linked-list-elements.html
  *
  * 相关题目推荐：
  *   27. 移除元素

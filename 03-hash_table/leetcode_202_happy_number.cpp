@@ -7,7 +7,7 @@
  *       然后重复这个过程直到这个数变为 1，也可能是无限循环但始终变不到 1。
  *       如果可以变为 1，那么这个数就是快乐数。
  *
- * 思路：哈希集合记录出现过的数，检测循环；或快慢指针
+ * 思路：哈希集合记录出现过的数，检测循环
  *
  * 复杂度：时间复杂度 O(log n)，空间复杂度 O(log n)（哈希集合记录出现过的平方和；int 范围内首次计算后数值 ≤ 810，迭代次数有常数上界）
  * 复杂度具体分析见本节笔记
@@ -26,30 +26,31 @@ using namespace std;
 
 class Solution {
 public:
-    int getSum(int n){
-        int sum=0;
+    int getSum(int n) {
+        int sum = 0;
         //
         while (n) {
-            int num=n%10;
-            sum+=num*num;
-            n/=10;
+            int num = n % 10;
+            sum += num * num;
+            n /= 10;
         }
         return sum;
     }
+
     bool isHappy(int n) {
         unordered_set<int> sum_set;
         // 不必纠结循环条件设置，内部判断退出就行
         while (1) {
             // 抽离成函数更清晰
-            int sum=getSum(n);
-            if (sum==1)return true;
-            if (sum_set.find(sum)!=sum_set.end()) {
+            int sum = getSum(n);
+            if (sum == 1)return true;
+            if (sum_set.find(sum) != sum_set.end()) {
                 return false;
             } else {
                 // 此处可省else，但是更合逻辑
                 sum_set.insert(sum);
             }
-            n=sum;
+            n = sum;
         }
     }
 };
@@ -58,11 +59,11 @@ int main() {
     Solution solution;
 
     // 示例 1
-    cout << (solution.isHappy(19) ? "true" : "false") << endl;  // 期望输出 true
+    cout << (solution.isHappy(19) ? "true" : "false") << endl; // 期望输出 true
     // 19 -> 82 -> 68 -> 100 -> 1
 
     // 示例 2
-    cout << (solution.isHappy(2) ? "true" : "false") << endl;  // 期望输出 false
+    cout << (solution.isHappy(2) ? "true" : "false") << endl; // 期望输出 false
 
     return 0;
 }
