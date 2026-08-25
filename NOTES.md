@@ -30,6 +30,12 @@ C++ 标准只规定最小位宽：int ≥ 16 位，long ≥ 32 位，long long �
 1. 字面量后缀：`0LL`、`5ll`（大小写均可）。
 2. 竞赛代码里的自定义别名：typedef long long ll; 或 using ll = long long;，这是手写出来的别名，不是语言内置的。
 
+## 前缀后缀
+
+前缀表：包含首元素，**不**包含尾元素的组合。比如str:abc，前缀表：a,ab
+
+后缀表则反之。
+
 # C++	
 
 ![image-20260816214940924](NOTES.assets/image-20260816214940924.png)
