@@ -2,6 +2,10 @@
 >
 > 做题过程中随手积累，专题收尾时统一整理。
 
+# 典型方法
+
+- KMP:关于字符串匹配，一个模版链一个主链这种，必须想到KMP
+
 # 题目回顾
 
 ## leetcode_28_find_first_occurrence_in_string
@@ -23,3 +27,6 @@ for (int i = 1; i < next.size(); i++) {
 }
 ```
 
+## leetcode_459_repeated_substring_pattern
+
+这题都可以用到KMP，不过仅仅是参演，核心不在于字符串匹配
