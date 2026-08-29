@@ -94,6 +94,10 @@ C++ 标准只规定最小位宽：int ≥ 16 位，long ≥ 32 位，long long �
 
 虽然std::set和std::multiset 的底层实现基于红黑树而非哈希表，它们通过红黑树来索引和存储数据。不过给我们的使用方式，还是哈希法的使用方式，即依靠键（key）来访问值（value）。所以使用这些数据结构来解决映射问题的方法，我们依然称之为哈希法。std::map也是一样的道理。
 
+> 补充：**C++中map、set、multimap，multiset的底层实现都是平衡二叉搜索树**，所以map、set的增删操作时间时间复杂度是logn，注意我这里没有说unordered_map、unordered_set，unordered_map、unordered_set底层实现是哈希表。
+>
+> **所以大家使用自己熟悉的编程语言写算法，一定要知道常用的容器底层都是如何实现的，最基本的就是map、set等等，否则自己写的代码，自己对其性能分析都分析不清楚！**
+
 #### 补充
 
 这里在说一下，一些C++的经典书籍上 例如STL源码剖析，说到了hash_set hash_map，这个与unordered_set，unordered_map又有什么关系呢？
@@ -193,6 +197,43 @@ std::queue<int, std::list<int>> third; // 定义以list为底层容器的队列
 | 访问队尾      | `back()`                           | `back()`                           |
 | 随机访问 `[]` | ✅ 支持                             | ❌ 不支持！不能访问中间元素         |
 | 遍历迭代器    | ✅ `begin() / end()`，可以 for 遍历 | ❌ **没有迭代器，不能遍历队列内部** |
+
+### 优先队列
+
+大顶堆 / 小顶堆都是 priority_queue。priority_queue 是同一个类模板（容器适配器），堆顶是"最大"元素，而"最大"由比较器定义：
+
+```cpp
+priority_queue<int, vector<int>, greater<int>>
+```
+
+这里的"大/小"完全由你传的第三个模板参数决定，堆结构本身不变（内部都是 make_heap / push_heap / pop_heap）。
+
+## 自定义排序
+
+排序函数是类？重载括号？怎么调用？
+是的，这个类叫仿函数（functor）/ 函数对象，如leetcode_347_top_k_frequent_elements：
+
+```cpp
+class mycomparison {
+public:
+    bool operator()(const pair<int, int>& lhs, const pair<int, int>& rhs) {
+        return lhs.second > rhs.second;
+    }
+};
+```
+
+本例 return lhs.second > rhs.second;lhs 频次 5、rhs 频次 3 ⟹ 5 > 3 为 true ⟹ 频次 5 的被认为"更小"，被沉下去⟹ 堆顶永远是频次最小的 ⟹ 小顶堆
+
+想改成大顶堆只需把 > 改成 <。另外注意，比较器必须满足严格弱序（不能对相等元素返回 true），这里 > 满足。
+
+调用形式就是 comp(a, b)，等价于 comp.operator()(a, b)，编译器做语法糖转换。所以"自己调用"就是 mycomparison()(p1, p2)（先构造临时对象再调用）。
+
+除了类，也可以传函数指针或 lambda（lambda 要用 decltype 且必须在构造函数里传实例，因为 lambda 无默认构造函数）。
+
+- 返回 true 是"要交换 a、b"吗？不是"交换"，语义是 "a 的优先级比 b 低（a 排在 b 后面）"，等价于 a < b：comp(a, b) == true ⟹ a 更"小" ⟹ a 被沉到下面
+  top() 返回的是"最大"元素，即对所有其他元素 x 都有 comp(x, top) == true
+- 第二个参数为什么传 vector？第二参数 = 底层容器，堆算法（push_heap 等）就作用于它之上，要求支持 front() / push_back() / pop_back() 和随机访问迭代器，通常用 vector<T>，也可换 deque<T>。
+  C++ 模板默认参数只能从右往左省略，所以想自定义第三个参数（比较器），就必须把第二个参数也显式写出来——这就是"为啥要传个 vector"的真正原因，不是功能需要。
 
 ## IO
 
