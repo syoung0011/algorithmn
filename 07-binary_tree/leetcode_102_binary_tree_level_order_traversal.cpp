@@ -29,6 +29,7 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int> > levelOrder(TreeNode *root) {
+        // 按题目要求，需要按层返回，不是前中后那种，结果集一个数组搞定
         if (!root) return {};
         vector<vector<int> > res;
         vector<int> level_vec;

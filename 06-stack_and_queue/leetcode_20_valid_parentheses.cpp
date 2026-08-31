@@ -50,7 +50,7 @@ public:
                 if (!st.empty() && isMatch(st.top(), ch)) {
                     st.pop();
                 } else {
-                    // 尽管只有一条依据，但是还是用{}，这样更规范清晰
+                    // 尽管只有一条依据，但是还是用{}，这样更规范清晰。如果是单if则可省
                     return false;
                 }
             } else {

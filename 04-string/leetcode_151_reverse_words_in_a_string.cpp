@@ -96,7 +96,7 @@ public:
         // 写法一：较为繁琐，fast自增写进循环体
         for (int fast = 0; fast < s.size();) {
             fast++;
-            // 条件顺序必须这样
+            // 条件顺序必须这样，短路
             if (fast == s.size() || s[fast] == ' ') {
                 reverseStr(s, slow, fast - 1);
                 slow = fast + 1;

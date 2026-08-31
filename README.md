@@ -62,10 +62,10 @@ algorithmn/
 | 数组 | 01-array | 7 | 7/7  |
 | 链表 | 02-linked_list | 7 | 7/7  |
 | 哈希表 | 03-hash_table | 8 | 8/8  |
-| 字符串 | 04-string | 9 | 5/9  |
+| 字符串 | 04-string | 9 | 7/7  |
 | 双指针法 | 05-two_pointers | 0 | 0/0  |
-| 栈与队列 | 06-stack_and_queue | 7 | 0/7  |
-| 二叉树 | 07-binary_tree | 39 | 0/39 |
+| 栈与队列 | 06-stack_and_queue | 7 | 7/7  |
+| 二叉树 | 07-binary_tree | 39 | 7/39 |
 | 回溯算法 | 08-backtracking | 15 | 0/15 |
 | 贪心算法 | 09-greedy | 17 | 0/17 |
 | 动态规划 | 10-dynamic_programming | 35 | 0/35 |
@@ -73,7 +73,7 @@ algorithmn/
 | 图论 | 12-graph_theory | 21 | 0/21 |
 | 其他经典题目 | 13-other_classic | 0 | 0/0  |
 
-当前共计 **170** 题。
+当前共计 **168** 题。
 
 - 进度格式为 `x/y`：y 为该专题题数（按目录下的题解 `.cpp` 文件数统计），新增题目后请同步更新"题数"与 y
 - 刷完一题后，自行把 x 更新为实际完成的题数；x 达到 y 即该专题已完成
