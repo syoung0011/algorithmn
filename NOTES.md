@@ -297,6 +297,24 @@ public:
 
 ![image-20260826195836400](NOTES.assets/image-20260826195836400.png)
 
+## 查漏补缺
+
+- for/while 循环内，每一趟定义的变量，如果没有static修饰，都是会重置的，应该是每趟循环结束后销毁局部变量
+
+- `for (auto entry : vec)`叫做range-for，它展开后等价于：
+
+  ```cpp
+  auto __begin = cur->vec.begin();
+  auto __end   = cur->vec.end();
+  for (; __begin != __end; ++__begin) { que.push(*__begin); }
+  ```
+
+  最后end处于容器末尾的后一个位置，解引用会越界异常
+
+
+
+
+
 # CLion相关 
 
 ## 如何运行
