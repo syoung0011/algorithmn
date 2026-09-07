@@ -7,7 +7,7 @@
  *
  * 思路：队列辅助，每次记录当前层节点数，分层输出
  *
- * 复杂度：时间复杂度 O(n)，空间复杂度 O(w)（w 为树的最大宽度，即队列峰值大小，
+ * 复杂度：时间复杂度 O(n)，空间复杂度 O(w)（w 为树的最大宽度，即队列峰值大小）
  * 空间复杂度ep：完美二叉树：最底层约 n/2 个节点 → 最坏 O(n)；链状树（每层 1 个节点）：O(1)）
  *
  * 参考：代码随想录 https://programmercarl.com/algo/binary-tree/0102-binary-tree-level-order-traversal.html

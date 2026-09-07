@@ -5,9 +5,9 @@
  * 题目：给你二叉树的根节点 root，返回它节点值的后序遍历（左 -> 右 -> 根）。
  *       本文件使用迭代法实现。
  *
- * 思路：TODO 解题思路（示例：前序遍历反转，或栈 + 标记法区分已访问节点）
+ * 思路：前序遍历反转，或栈 + 标记法区分已访问节点
  *
- * 复杂度：时间复杂度 O(?)，空间复杂度 O(?)
+ * 复杂度：时间复杂度 O(n)，空间复杂度 O(h)
  *
  * 参考：代码随想录 https://programmercarl.com/algo/binary-tree/iterative-binary-tree-traversal.html
  *
