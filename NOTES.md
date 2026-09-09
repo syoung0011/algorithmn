@@ -319,6 +319,28 @@ public:
 
 
 
+## 踩坑汇总
+
+### 对 vector<int> 类型的非 const 左值引用不能绑定到类型 vector<int> 的右值
+
+```
+TreeNode* constructMaximumBinaryTree(vector<int>& nums)
+```
+
+函数参数是 **`vector<int>&`（非 const 左值引用）**
+
+```
+node->right = constructMaximumBinaryTree(vector<int>(nums.begin() + index + 1, nums.end()));
+```
+
+`vector<int>(...)` 在函数参数里直接构造，得到的是**临时对象（右值）**。
+
+C++ 规则：
+
+✅ 非 const 左值引用 `T&`**只能绑定左值（有名字的变量，如 leftNums）**
+
+❌ 不能绑定临时右值（没有名字、表达式产生的临时对象）
+
 # CLion相关 
 
 ## 如何运行
