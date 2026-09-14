@@ -7,8 +7,8 @@
  *
  * 思路：后序末元素为根，在中序中定位根并切分左右子树，递归构建
  *
- * 复杂度：时间复杂度 O(n²)（斜树时每层拷贝/查找 O(n)，共 n 层）
- *        空间复杂度 O(n²) 最坏（父层 local vector 在整棵子树递归期间一直存活），递归栈 O(n)
+ * 复杂度：时间复杂度 O(n * h)（斜树时每层拷贝/查找 O(n)，共 n 层，按层计算，不要按节点计算）
+ *        空间复杂度 O(n * h) 最坏（父层 local vector 在整棵子树递归期间一直存活），递归栈 O(n)
  *
  * 参考：代码随想录 https://programmercarl.com/algo/binary-tree/0106-construct-binary-tree-from-inorder-and-postorder-traversal.html
  *

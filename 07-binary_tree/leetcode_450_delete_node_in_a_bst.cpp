@@ -54,7 +54,7 @@ int main() {
     // 示例 1：树 [5,3,6,2,4,null,7]，删除 3
     TreeNode *root1 = createTree({5, 3, 6, 2, 4, INT_MIN, 7});
     printTree(solution.deleteNode(root1, 3)); // 期望输出 [5,4,6,2,null,null,7]
-    deleteTree(root1); // deleteNode 惯例只解链不 free，原 root 仍可达全部节点
+    deleteTree(root1); // 被删节点已释放，剩余节点仍由 root1 可达
 
     // 示例 2：树 [5,3,6,2,4,null,7]，删除 0
     TreeNode *root2 = createTree({5, 3, 6, 2, 4, INT_MIN, 7});
