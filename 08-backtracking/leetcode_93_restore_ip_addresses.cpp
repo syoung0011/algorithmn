@@ -8,7 +8,11 @@
  *
  * 思路：回溯法，插入三个点，每段校验 0-255 且无前导零
  *
- * 复杂度：时间复杂度 O(?)，空间复杂度 O(？)
+ * 复杂度：时间复杂度 O(3^4) = O(1)（IP 固定 4 段、每段最多 3 种长度，
+ *        切分组合数为常数 3^4 = 81；每段合法性判断 O(1)。
+ *        注意别写成 O(3^n)：段数固定为 4，不是变量）
+ *        空间复杂度 O(n)（按值传入的字符串副本；递归栈固定 4 层 O(1)，
+ *        结果至多 81 个定长串 O(1)）
  *
  * 参考：代码随想录 https://programmercarl.com/algo/backtracking/0093-restore-ip-addresses.html
  *
@@ -23,17 +27,20 @@
 
 using namespace std;
 
+// 用小数点的个数来判断合法性，比较巧妙，很难想到
 int pointSum;
 vector<string> res;
 
 class Solution {
 public:
+    // 本题难点和精髓就在于如何抽出，以及怎么实现判断函数
     bool isValid(const string &s, int left, int right) {
         if (left > right) return false;
         if (s[left] == '0' && left != right) return false;
         int num = 0;
         for (int i = left; i <= right; i++) {
             num = num * 10 + (s[i] - '0');
+            // 在里面判断是个好习惯，就近原则不易忘，还能防止溢出
             if (num > 255) {
                 return false;
             }
@@ -41,7 +48,8 @@ public:
         return true;
     }
 
-    // 直接
+    // 不能const string &s，那样没法修改
+    // 本题是原地思路，要是用path应该也可以，选择要灵活
     void dfs(string &s, int index) {
         if (pointSum == 3) {
             if (isValid(s, index, s.size() - 1)) {
@@ -49,14 +57,16 @@ public:
                 return;
             }
         }
+        // 在索引元素后面分割
         for (int i = index; i < s.size(); i++) {
             if (isValid(s, index, i)) {
                 pointSum++;
                 s.insert(s.begin() + i + 1, '.');
+                // 隐藏坑，插入.后，目标位置后移，需要再+1
                 dfs(s, i + 2);
                 pointSum--;
                 s.erase(s.begin() + i + 1);
-            } else break;
+            } else break;   // 剪枝别忘了
         }
     }
 

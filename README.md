@@ -66,27 +66,33 @@ algorithmn/
 - 修正已有题解（发现错误、事后优化）单独成 commit，不混入新题提交
 - 笔记随手记随手提交，各专题心得写入对应目录的 `NOTES.md`，跨专题内容写入根目录 `NOTES.md`
 - 每周总结：每周一回顾上一周，Wxx 填**被总结**的那一周；内容简短直接写 commit message，篇幅较长则追加到根目录 `NOTES.md`
+  - `[weekly]` commit 只保留一行 message，**不塞代码改动**；本周的改良/修错明细写在根目录 `NOTES.md` 的「周结流水」章节
+  - 明细格式：`## 2026-Wxx` 下每行一条，前缀 `fixed:` 或 `improvement:`
+  - 若某处修错本身值得单独追溯，另起一个 `fixed [目录] 简要说明` commit，而不是改 `[weekly]` 的 message
+- 每周结打完 `[weekly]` 后紧接着打一个**带注解的 tag**：`git tag -a Wxx -m "xxth周结"`，如 `git tag -a W38 -m "38th周结"`
+  - tag 打在 `[weekly]` commit 上；若此后又有 `[notes]` 等提交，须显式指定 commit：`git tag -a W38 <sha> -m "38th周结"`
 - 构建产物目录（如 `cmake-build-debug/`）已被 .gitignore 忽略，不会上传
 
 ## 打卡进度
 
 | 专题 | 目录 | 题数 | 进度    |
-| ---- | ---- | ---- |-------|
-| 数组 | 01-array | 7 | 7/7   |
-| 链表 | 02-linked_list | 7 | 7/7   |
-| 哈希表 | 03-hash_table | 8 | 8/8   |
-| 字符串 | 04-string | 9 | 7/7   |
-| 双指针法 | 05-two_pointers | 0 | 0/0   |
-| 栈与队列 | 06-stack_and_queue | 7 | 7/7   |
-| 二叉树 | 07-binary_tree | 39 | 37/39 |
-| 回溯算法 | 08-backtracking | 15 | 0/15  |
+| ---- | ---- |----|-------|
+| 数组 | 01-array | 7  | 7/7   |
+| 链表 | 02-linked_list | 7  | 7/7   |
+| 哈希表 | 03-hash_table | 8  | 8/8   |
+| 字符串 | 04-string | 7  | 7/7   |
+| 双指针法 | 05-two_pointers | 0  | 0/0   |
+| 栈与队列 | 06-stack_and_queue | 7  | 7/7   |
+| 二叉树 | 07-binary_tree | 38 | 38/38 |
+| 回溯算法 | 08-backtracking | 15 | 8/15  |
 | 贪心算法 | 09-greedy | 17 | 0/17  |
 | 动态规划 | 10-dynamic_programming | 35 | 0/35  |
-| 单调栈 | 11-monotonic_stack | 5 | 0/5   |
+| 单调栈 | 11-monotonic_stack | 5  | 0/5   |
 | 图论 | 12-graph_theory | 21 | 0/21  |
-| 其他经典题目 | 13-other_classic | 0 | 0/0   |
+| 其他经典题目 | 13-other_classic | 1  | 1/1   |
 
-当前共计 **168** 题。
+当前共计 **166** 题。
 
 - 进度格式为 `x/y`：y 为该专题题数（按目录下的题解 `.cpp` 文件数统计），新增题目后请同步更新"题数"与 y
 - 刷完一题后，自行把 x 更新为实际完成的题数；x 达到 y 即该专题已完成
+- `13-other_classic` 收录代码随想录未覆盖的课外拓展题（如 LeetCode 105），这些不计入随想录的刷题进度

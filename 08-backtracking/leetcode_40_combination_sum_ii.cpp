@@ -35,12 +35,14 @@ vector<bool> used;
 class Solution {
 public:
     void dfs(const vector<int> &candidates, int target, int idx) {
+        // 用target减值，不要减过头了
         if (target < 0) return;
         if (target == 0) {
             res.push_back(path);
             return;
         }
         for (int i = idx; i < candidates.size(); i++) {
+            // 不能break,否则dfs(candidates, target, 0)无法以后面点为起点，不过如果是中间者，确实情况重合了
             if (i > 0 && candidates[i] == candidates[i - 1] && used[i - 1] == false) continue;
             path.push_back(candidates[i]);
             used[i] = true;

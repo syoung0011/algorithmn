@@ -8,7 +8,9 @@
  *
  * 思路：递归，找到区间最大值作为根，左右递归构建
  *
- * 复杂度：时间复杂度 O(n * h)，空间复杂度 O(n * h)
+ * 复杂度：时间复杂度 O(n * h)（每层找最大值 + 拷贝子数组共 O(n)，共 h 层；斜树时 h = n，
+ *        即最坏 O(n^2)）
+ *        辅助空间 O(n * h) 最坏，递归栈 O(h)
  *
  * 参考：代码随想录 https://programmercarl.com/algo/binary-tree/0654-maximum-binary-tree.html
  *

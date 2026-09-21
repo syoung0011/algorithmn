@@ -8,7 +8,10 @@
  *
  * 思路：回溯法，同层元素可重复选，startIndex 不 +1；排序 + 剪枝优化
  *
- * 复杂度：时间复杂度 O(n^n)，空间复杂度 O(n)
+ * 复杂度：时间复杂度 O(n^(target/min(candidates)))（n 为候选数，递归深度受 target/min 约束，
+ *        即「最多能取几个数」；每个解还要拷贝 O(target/min) 长度。
+ *        这是指数级上界，实际受 target 限制远小于它）
+ *       空间复杂度 O(target/min(candidates))（path + 递归栈深度；不计输出结果）
  *
  * 参考：代码随想录 https://programmercarl.com/algo/backtracking/0039-combination-sum.html
  *
@@ -28,7 +31,8 @@ vector<vector<int> > res;
 
 class Solution {
 public:
-    void dfs(int idx, int sum, vector<int> &candidates, int target) {
+    void dfs(int idx, int sum, const vector<int> &candidates, int target) {
+        // 竖向剪枝
         if (sum > target) {
             return;
         }
@@ -36,6 +40,7 @@ public:
             res.push_back(path);
             return;
         }
+        // 可以先排序原数组，再进入算法，这样就可以横向剪枝
         for (int i = idx; i < candidates.size(); i++) {
             path.push_back(candidates[i]);
             dfs(i, sum + candidates[i], candidates, target);

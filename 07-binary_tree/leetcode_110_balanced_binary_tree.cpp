@@ -7,7 +7,9 @@
  *
  * 思路：自顶向下，先求左右子树高度再递归判断
  *
- * 复杂度：时间复杂度 O(n * h)，空间复杂度 O(h)
+ * 复杂度：时间复杂度 O(n * h)（自顶向下，每个节点都要重算一次子树高度：每层求高 O(n)，
+ *        共 h 层；平衡树 h = log n 即 O(n log n)，斜树 h = n 即 O(n^2)）
+ *        空间复杂度 O(h)（递归栈）
  *
  * 参考：代码随想录 https://programmercarl.com/algo/binary-tree/0110-balanced-binary-tree.html
  *

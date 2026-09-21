@@ -11,7 +11,8 @@
  *        即最坏 O(n^2)；不要按节点数算成 O(n)）
  *        辅助空间 O(n * h) 最坏（父层局部 vector 在整棵子树递归期间一直存活），递归栈 O(h)
  *
- * 参考：代码随想录 https://programmercarl.com/algo/binary-tree/0106-construct-binary-tree-from-inorder-and-postorder-traversal.html
+ * 参考：代码随想录未收录本题（属课外拓展题）；
+ *       思路与 106 互为镜像，可对照 binary-tree/0106-construct-binary-tree-from-inorder-and-postorder-traversal
  *
  * 相关题目推荐：
  *   106. 从中序与后序遍历序列构造二叉树

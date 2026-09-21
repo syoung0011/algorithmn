@@ -420,3 +420,29 @@ ctrl+alt+enter 在上方插入空行
 - 一入循环深似海，从此 offer 是路人
 - 抓住循环不变式，否则做题就是个死循环
 - 还记得梦开始和破碎的地方是哪里吗
+
+# 周结流水
+
+> `[weekly]` commit 只写一行 message，本周的改动明细记在这里。
+> 格式：`## 2026-Wxx`，每条一行，前缀 `fixed:`（修正错误）/ `improvement:`（改良优化）。
+
+## 2026-W38
+
+- improvement: 12 道回溯题的头文件复杂度注释补全，原先多处是 `O(?)` 占位或写错的量级
+  - `leetcode_77`、`leetcode_216`：`O(n^2)` / `O(?)` → `O(k·C(n,k))`，空间改为 `O(k)`（path + 递归栈，不计输出）
+  - `leetcode_39`：`O(n^n)` → `O(n^(target/min(candidates)))`，并说明这是指数上界
+  - `leetcode_93`：`O(?)` → `O(3^4) = O(1)`，强调段数固定为 4、不是变量，别写成 `O(3^n)`
+  - `leetcode_17`：`O(a^size)` → `O(4^n·n)`，空间 `O(n)`；计入输出则 `O(4^n·n)`
+- improvement: 4 道二叉树的复杂度注释按「按层计算，不要按节点计算」统一修正
+  - `leetcode_106`、`leetcode_654`：明确区分「辅助空间 O(n·h)」与「递归栈 O(h)」
+  - `leetcode_108`：空间从 `O(n·log n)` 修正为 `O(n)`（左右数组顺序执行、不跨层累积，峰值 < 2n）
+  - `leetcode_110`：`O(n·h)` 展开为平衡树 `O(n log n)`、斜树 `O(n^2)` 两种情形
+- fixed: `leetcode_17` 空输入 `""` 会输出一个空串，加 `if (digits.empty()) return {};` 修正
+- fixed: `leetcode_93` 插入 `.` 后目标位置后移，递归要传 `i + 2`；`else break` 补上剪枝说明
+- improvement: `leetcode_77`、`leetcode_216` 把全局 `temp` 统一重命名为 `path`，与其余回溯题保持一致
+- improvement: `leetcode_216` 用额外变量 `sum` 传参，避免每次求和 path；`dfs` 参数从 5 个减到 4 个
+- improvement: 函数参数补 `const &`（`leetcode_17` 的 `digits`、`leetcode_39` 的 `candidates`）
+- improvement: `leetcode_40` 补充 `used[i-1] == false` 处为何用 `continue` 而非 `break` 的注释
+- improvement: README 打卡进度表——`04-string` 题数 `9 → 7`、`08-backtracking` 进度补为 `8/15`，合计 `168 → 166`
+- improvement: `leetcode_105` 归位到 `13-other_classic`（随想录未收录，属课外拓展），并修正其误指向 106 的参考链接
+- 本周完成 8 题：`leetcode_77`、`216`、`17`、`39`、`40`、`131`、`93`、`78`（回溯算法 8/15）

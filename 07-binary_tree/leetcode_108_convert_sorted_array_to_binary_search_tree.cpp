@@ -8,7 +8,8 @@
  *
  * 思路：递归，取中间元素作为根，左右区间递归构建
  *
- * 复杂度：时间复杂度 O(n)，空间复杂度 O(n * log n)（每层都要新建左右两个数组）
+ * 复杂度：时间复杂度 O(n * h)（每层拷贝子数组共 O(n)，h 层；h = log n，即 O(n log n)），
+ *        辅助空间 O(n)（每层新建的左右数组顺序执行、不跨层累积，峰值 < 2n）
  *
  * 参考：代码随想录 https://programmercarl.com/algo/binary-tree/0108-convert-sorted-array-to-binary-search-tree.html
  *

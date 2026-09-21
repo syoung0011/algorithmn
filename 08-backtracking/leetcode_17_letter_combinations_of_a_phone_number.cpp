@@ -7,7 +7,9 @@
  *
  * 思路：回溯法，数字映射字符串数组，逐位递归收集字母
  *
- * 复杂度：时间复杂度 O(a^size)，空间复杂度 O(sie)
+ * 复杂度：时间复杂度 O(4^n · n)（n 为数字位数，每个数字最多 4 个字母，每个解拷贝长度 n）
+ *       空间复杂度 O(n)（path + 递归栈深度；不计输出结果，
+ *       计入输出则 O(4^n · n)）
  *
  * 参考：代码随想录 https://programmercarl.com/algo/backtracking/0017-letter-combinations-of-a-phone-number.html
  *
@@ -37,12 +39,14 @@ const string letterMap[10] = {
     "wxyz", // 9
 };
 
+// 注意不是vector<vector<string>>，字符串本身就是char的数组了
 vector<string> res;
 string path;
 
 class Solution {
 public:
-    void dfs(string digits, int idx) {
+    // 一定要const &，提高性能
+    void dfs(const string &digits, int idx) {
         if (idx == digits.size()) {
             res.push_back(path);
             return;
@@ -56,6 +60,8 @@ public:
     }
 
     vector<string> letterCombinations(string digits) {
+        // 空输入 "" 会输出一个空串，而非官方要求的 {}
+        if (digits.empty()) return {};
         res.clear();
         path.clear();
         dfs(digits, 0);
