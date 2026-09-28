@@ -29,7 +29,7 @@
 
 using namespace std;
 
-vector<vector<string>> res;
+vector<vector<string> > res;
 
 class Solution {
 public:
@@ -41,16 +41,17 @@ public:
         }
         // 因为是逐层，所以每次只要检查左上右上两个方向，而不包括下面
         // for的判断自动提前退出，不要在里面if，不然就有冗余遍历
-        for (int i = row - 1, j = col - 1; i >= 0 && j>= 0; i--, j--) {
+        for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
             if (board[i][j] == 'Q') return false;
         }
-        for(int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+        for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
             if (board[i][j] == 'Q') {
                 return false;
             }
         }
         return true;
     }
+
     void dfs(vector<string> &board, int n, int row) {
         if (row == n) {
             res.push_back(board);
@@ -65,7 +66,8 @@ public:
             }
         }
     }
-    vector<vector<string>> solveNQueens(int n) {
+
+    vector<vector<string> > solveNQueens(int n) {
         res.clear();
         // 这个初始化需要熟悉，string 不能写成 vector<char>
         vector<string> board(n, string(n, '.'));
@@ -78,8 +80,8 @@ int main() {
     Solution solution;
 
     // 示例 1
-    for (const auto& board : solution.solveNQueens(4)) {
-        for (const string& row : board) {
+    for (const auto &board: solution.solveNQueens(4)) {
+        for (const string &row: board) {
             cout << row << endl;
         }
         cout << "---" << endl;
@@ -89,9 +91,9 @@ int main() {
     // ..Q. / Q... / ...Q / .Q..
 
     // 示例 2
-    for (const auto& board : solution.solveNQueens(1)) {
-        for (const string& row : board) {
-            cout << row << endl;  // 期望输出 Q
+    for (const auto &board: solution.solveNQueens(1)) {
+        for (const string &row: board) {
+            cout << row << endl; // 期望输出 Q
         }
     }
 

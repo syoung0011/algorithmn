@@ -84,12 +84,12 @@ algorithmn/
 | 双指针法 | 05-two_pointers | 0  | 0/0   |
 | 栈与队列 | 06-stack_and_queue | 7  | 7/7   |
 | 二叉树 | 07-binary_tree | 38 | 38/38 |
-| 回溯算法 | 08-backtracking | 15 | 8/15  |
+| 回溯算法 | 08-backtracking | 14 | 8/14  |
 | 贪心算法 | 09-greedy | 17 | 0/17  |
 | 动态规划 | 10-dynamic_programming | 35 | 0/35  |
 | 单调栈 | 11-monotonic_stack | 5  | 0/5   |
 | 图论 | 12-graph_theory | 21 | 0/21  |
-| 其他经典题目 | 13-other_classic | 1  | 1/1   |
+| 其他经典题目 | 13-other_classic | 2  | 1/2   |
 
 当前共计 **166** 题。
 

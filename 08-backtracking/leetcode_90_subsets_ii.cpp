@@ -35,7 +35,7 @@ class Solution {
 public:
     void dfs(const vector<int> &nums, int index, vector<bool> &used) {
         res.push_back(path);
-        // 其实不用担心这个，因为下面for的条件判断也是不满足的
+        // 其实不用担心这个，因为下面for的条件判断也是不满足的，所以可省
         if (index == nums.size()) {
             return;
         }
