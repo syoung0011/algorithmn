@@ -47,6 +47,7 @@ public:
         // 官网写法，推荐，重点看循环
         if (nums.size() == 1) return true;
         int cover = 0;
+        // 最核心的就是这个循环，不是从头遍历到尾，而是这个覆盖区间的动态循环，如同单向滑动窗口
         for (int i = 0; i <= cover; i++) {
             // 最好用max，要记住，不然不像会写算法的，而且也是为了减少一次显示加法运算num + i
             if (nums[i] + i > cover) {

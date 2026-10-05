@@ -25,7 +25,7 @@ using namespace std;
 
 class Solution {
 public:
-    int jump(vector<int>& nums) {
+    int jump(vector<int> &nums) {
         int cover = 0;
         int ret = 0;
         int tempMax = 0;
@@ -52,11 +52,11 @@ int main() {
 
     // 示例 1
     vector<int> nums1 = {2, 3, 1, 1, 4};
-    cout << solution.jump(nums1) << endl;  // 期望输出 2
+    cout << solution.jump(nums1) << endl; // 期望输出 2
 
     // 示例 2
     vector<int> nums2 = {2, 3, 0, 1, 4};
-    cout << solution.jump(nums2) << endl;  // 期望输出 2
+    cout << solution.jump(nums2) << endl; // 期望输出 2
 
     return 0;
 }
