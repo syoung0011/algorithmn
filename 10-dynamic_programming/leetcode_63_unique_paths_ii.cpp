@@ -24,10 +24,11 @@ using namespace std;
 
 class Solution {
 public:
-    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+    int uniquePathsWithObstacles(vector<vector<int> > &obstacleGrid) {
         if (obstacleGrid[0][0] == 1) return 0;
         int m = obstacleGrid.size(), n = obstacleGrid[0].size();
-        vector<vector<int>> dp(m, vector<int>(n));
+        vector<vector<int> > dp(m, vector<int>(n));
+        // 遍历初始化首行首列，要注意遇到障碍物即停，后继dp值为0，逻辑上模拟障碍，表示此路不通
         dp[0][0] = 1;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
@@ -50,12 +51,12 @@ int main() {
     Solution solution;
 
     // 示例 1
-    vector<vector<int>> grid1 = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
-    cout << solution.uniquePathsWithObstacles(grid1) << endl;  // 期望输出 2
+    vector<vector<int> > grid1 = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
+    cout << solution.uniquePathsWithObstacles(grid1) << endl; // 期望输出 2
 
     // 示例 2
-    vector<vector<int>> grid2 = {{0, 1}, {0, 0}};
-    cout << solution.uniquePathsWithObstacles(grid2) << endl;  // 期望输出 1
+    vector<vector<int> > grid2 = {{0, 1}, {0, 0}};
+    cout << solution.uniquePathsWithObstacles(grid2) << endl; // 期望输出 1
 
     return 0;
 }

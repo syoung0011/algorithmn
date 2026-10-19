@@ -86,12 +86,12 @@ algorithmn/
 | 二叉树 | 07-binary_tree | 38 | 38/38 |
 | 回溯算法 | 08-backtracking | 14 | 8/14  |
 | 贪心算法 | 09-greedy | 17 | 0/17  |
-| 动态规划 | 10-dynamic_programming | 35 | 0/35  |
+| 动态规划 | 10-dynamic_programming | 36 | 0/36  |
 | 单调栈 | 11-monotonic_stack | 5  | 0/5   |
 | 图论 | 12-graph_theory | 21 | 0/21  |
 | 其他经典题目 | 13-other_classic | 2  | 1/2   |
 
-当前共计 **166** 题。
+当前共计 **167** 题。
 
 - 进度格式为 `x/y`：y 为该专题题数（按目录下的题解 `.cpp` 文件数统计），新增题目后请同步更新"题数"与 y
 - 刷完一题后，自行把 x 更新为实际完成的题数；x 达到 y 即该专题已完成
