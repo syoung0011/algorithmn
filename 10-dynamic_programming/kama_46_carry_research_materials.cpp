@@ -10,11 +10,11 @@
  *       第二行为 M 个正整数，表示每种材料所占空间；
  *       第三行为 M 个正整数，表示每种材料的价值。
  *
- * 思路：TODO 解题思路（示例：01 背包，容量为 N，dp[j] 表示容量 j 的背包能装的
- *       最大价值，dp[j] = max(dp[j], dp[j - costs[i]] + values[i])；一维数组写法
- *       需先遍历物品、再倒序遍历背包容量，保证每个物品只用一次）
+ * 思路：01 背包，容量为 N，dp[j] 表示容量 j 的背包能装的
+ *      最大价值，dp[j] = max(dp[j], dp[j - costs[i]] + values[i])；一维数组写法
+ *      需先遍历物品、再倒序遍历背包容量，保证每个物品只用一次
  *
- * 复杂度：时间复杂度 O(?)，空间复杂度 O(?)
+ * 复杂度：时间复杂度 O(MN)，空间复杂度 O(N)
  *
  * 参考：代码随想录 https://programmercarl.com/%E8%83%8C%E5%8C%85%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%8001%E8%83%8C%E5%8C%85-1.html
  *
@@ -26,6 +26,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -84,6 +85,7 @@ int main() {
 
     // 一维滚动dp
     vector<int> dp(n + 1);
+    // 其实可以不用初始化第一行了，因为不依赖于上一行，而是上一趟dp数组，融入物品从0遍历
     for (int j = n; j > 0; j--) {
         if (j >= costs[0]) {
             dp[j] = values[0];
@@ -91,7 +93,8 @@ int main() {
     }
     for (int i = 1; i < m; i++) {
         for (int j = n; j > 0; j--) {
-            if (j - costs[j] >= 0) {
+            // if冗余了，直接融入 j 的循环表达式，与二维不同，不满足直接退循环，因为dp[j] = dp[j]也没意义
+            if (j - costs[i] >= 0) {
                 dp[j] = max(dp[j], dp[j - costs[i]] + values[i]);
             }
         }
