@@ -25,10 +25,12 @@ using namespace std;
 
 class Solution {
 public:
-    int change(int amount, vector<int>& coins) {
+    int change(int amount, vector<int> &coins) {
         // 必须用ull才能过，中间可能会溢出int，但是结果不一定溢出，这是刚好卡了验证不让ak，这一定要谨慎
         vector<unsigned long long> dp(amount + 1); // 别写成中括号，找了半天错
         dp[0] = 1;
+        // 先物品，求组合，原理就是物品 1 一定先于 2，所以可以的话只会 12 而不会 21
+        // 如果先容量，那么上一次容量的 2 就先于下一次容量的 1，求的是排列
         for (int i = 0; i < coins.size(); i++) {
             for (int j = coins[i]; j <= amount; j++) {
                 dp[j] += dp[j - coins[i]];
@@ -43,15 +45,15 @@ int main() {
 
     // 示例 1
     vector<int> coins1 = {1, 2, 5};
-    cout << solution.change(5, coins1) << endl;  // 期望输出 4
+    cout << solution.change(5, coins1) << endl; // 期望输出 4
 
     // 示例 2
     vector<int> coins2 = {2};
-    cout << solution.change(3, coins2) << endl;  // 期望输出 0
+    cout << solution.change(3, coins2) << endl; // 期望输出 0
 
     // 示例 3
     vector<int> coins3 = {10};
-    cout << solution.change(10, coins3) << endl;  // 期望输出 1
+    cout << solution.change(10, coins3) << endl; // 期望输出 1
 
     return 0;
 }

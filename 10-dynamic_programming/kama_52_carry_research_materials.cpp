@@ -48,7 +48,7 @@ int main() {
     for (int j = 1; j <= v; j++) {
         for (int i = 0; i < n; i++) {
             // 这个实际是可以用二维，也可先遍历物品，那样还能省一个if，因为把判断融入循环判断
-            // 但是为了便于记忆，不如直接顺序一维
+            // 这里先容量只是为了表明可行，正规还是先物品
             if (j >= weights[i]) {
                 dp[j] = max(dp[j], dp[j - weights[i]] + values[i]);
             }

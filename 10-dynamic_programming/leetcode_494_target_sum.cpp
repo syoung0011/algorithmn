@@ -26,7 +26,7 @@ using namespace std;
 
 class Solution {
 public:
-    int findTargetSumWays(vector<int>& nums, int target) {
+    int findTargetSumWays(vector<int> &nums, int target) {
         int sum = 0;
         for (int i = 0; i < nums.size(); i++) {
             sum += nums[i];
@@ -56,11 +56,11 @@ int main() {
 
     // 示例 1
     vector<int> nums1 = {1, 1, 1, 1, 1};
-    cout << solution.findTargetSumWays(nums1, 3) << endl;  // 期望输出 5
+    cout << solution.findTargetSumWays(nums1, 3) << endl; // 期望输出 5
 
     // 示例 2
     vector<int> nums2 = {1};
-    cout << solution.findTargetSumWays(nums2, 1) << endl;  // 期望输出 1
+    cout << solution.findTargetSumWays(nums2, 1) << endl; // 期望输出 1
 
     return 0;
 }
