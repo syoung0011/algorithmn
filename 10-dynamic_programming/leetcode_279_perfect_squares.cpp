@@ -31,6 +31,7 @@ public:
         int up = sqrt(n);
         // 别忘了
         dp[0] = 0;
+        // 抽象物品，不是真正物品(i^2)
         for (int i = 1; i <= up; i++) {
             int weight = i * i;
             // 不是 j = 1开始，老犯低级错
@@ -48,10 +49,10 @@ int main() {
     Solution solution;
 
     // 示例 1
-    cout << solution.numSquares(12) << endl;  // 期望输出 3（4+4+4）
+    cout << solution.numSquares(12) << endl; // 期望输出 3（4+4+4）
 
     // 示例 2
-    cout << solution.numSquares(13) << endl;  // 期望输出 2（4+9）
+    cout << solution.numSquares(13) << endl; // 期望输出 2（4+9）
 
     return 0;
 }

@@ -6,7 +6,7 @@
  *       总金额。计算并返回可以凑成总金额所需的最少的硬币个数。如果没有任何一种
  *       硬币组合能组成总金额，返回 -1。你可以认为每种硬币的数量是无限的。
  *
- * 思路：完全背包求最小个数，dp[j] 表示凑成金额 j 所需的最少硬币数，dp[j] = min(dp[j], dp[j - coins[i]] + 1)）
+ * 思路：完全背包求最小个数，dp[j] 表示凑成金额 j 所需的最少硬币数，dp[j] = min(dp[j], dp[j - coins[i]] + 1)
  *
  * 复杂度：时间复杂度 O(m * amount)，空间复杂度 O(amount)（其中m为硬币个数）
  *
@@ -20,6 +20,7 @@
 
 #include <iostream>
 #include <vector>
+#include <climits>
 
 using namespace std;
 
