@@ -32,6 +32,7 @@ class Solution {
 public:
     int maxProfit(vector<int> &prices) {
         vector<vector<int> > dp(prices.size(), vector<int>(2));
+        // 前者持有，后者不持有
         dp[0][0] = -prices[0];
         dp[0][1] = 0;
         // 什么时候多维dp，就是对于每个状态，其状态选择不唯一，比如股票可以是持有和不持有
